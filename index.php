@@ -12,10 +12,10 @@ use custumbox\Controleurs\ControleurBoite as ControleurBoite;
 require __DIR__ . '/vendor/autoload.php';
 
 session_start();
-/*ConnexionFactory::setConfig("conf.ini.dist");
+ConnexionFactory::setConfig("conf.ini.dist");
 $db = ConnexionFactory::makeConnexion();
 $db->setAsGlobal();
-$db->bootEloquent();*/
+$db->bootEloquent();
 
 $configuration = [
     'settings' => [
@@ -27,25 +27,19 @@ $c = new \Slim\Container($configuration);
 
 $app = new \Slim\App;
 
-//debut des routes
-
 $app->get('/', function (Request $req, Response $resp, $args) {
         $acc = new VueAccueil($this, $req);
         return $acc->render();
     }
 )->setName("accueil");
 
-$app->get(
-    '/creerboite',
-    function (Request $req, Response $resp, $args) {
+$app->get('/creerboite', function (Request $req, Response $resp, $args) {
         $c = new ControleurBoite($this, $req);
         return $c->createBox($req, $resp, $args);
     }
 )->setName('creerboite');
 
-$app->post(
-    '/creerboite',
-    function (Request $req, Response $resp, $args) {
+$app->post('creerboite', function (Request $req, Response $resp, $args) {
         //
     }
 );
@@ -60,7 +54,7 @@ $app->get(
 )->setName('recapitulatif');
 
 $app->post(
-    '/recapitulatif',
+    'recapitulatif',
     function (Request $req, Response $resp, $args) {
         $c = new ControleurBoite($this, $req);
         return $c->recap($req, $resp, $args);
@@ -75,6 +69,14 @@ $app->get(
     }
 )->setName('personaliserboite');
 
+$app->get(
+    '/afficher-boite/{token}',
+    function (Request $req, Response $resp, $args) {
+        $c = new ControleurBoite($this, $req);
+        return $c->commenterBoite($req, $resp, $args);
+    }
+)->setName('afficher-boite');
+
 $app->post(
     '/personaliserboite',
     function (Request $req, Response $resp, $args) {
@@ -84,7 +86,7 @@ $app->post(
 )->setName('personaliserboite');
 
 $app->post(
-    '/finaliserboite',
+    'finaliserboite',
     function (Request $req, Response $resp, $args) {
         //
     }

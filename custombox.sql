@@ -28,9 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `boite` (
-  `id` int(11) NOT NULL,
-  `taille` text NOT NULL,
-  `poidsmax` float NOT NULL
+                         `id` int(11) NOT NULL,
+                         `taille` text NOT NULL,
+                         `poidsmax` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -38,9 +38,9 @@ CREATE TABLE `boite` (
 --
 
 INSERT INTO `boite` (`id`, `taille`, `poidsmax`) VALUES
-(1, 'petite', 0.7),
-(2, 'moyenne', 1.5),
-(3, 'grande', 3.2);
+                                                     (1, 'petite', 0.7),
+                                                     (2, 'moyenne', 1.5),
+                                                     (3, 'grande', 3.2);
 
 -- --------------------------------------------------------
 
@@ -49,8 +49,8 @@ INSERT INTO `boite` (`id`, `taille`, `poidsmax`) VALUES
 --
 
 CREATE TABLE `categorie` (
-  `id` int(11) NOT NULL,
-  `nom` text NOT NULL
+                             `id` int(11) NOT NULL,
+                             `nom` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -58,11 +58,11 @@ CREATE TABLE `categorie` (
 --
 
 INSERT INTO `categorie` (`id`, `nom`) VALUES
-(1, 'Beauté'),
-(2, 'Bijoux'),
-(3, 'Décoration'),
-(4, 'Produit ménager'),
-(5, 'Upcycling');
+                                          (1, 'Beauté'),
+                                          (2, 'Bijoux'),
+                                          (3, 'Décoration'),
+                                          (4, 'Produit ménager'),
+                                          (5, 'Upcycling');
 
 -- --------------------------------------------------------
 
@@ -71,11 +71,11 @@ INSERT INTO `categorie` (`id`, `nom`) VALUES
 --
 
 CREATE TABLE `produit` (
-  `id` int(11) NOT NULL,
-  `titre` text NOT NULL,
-  `description` text NOT NULL,
-  `categorie` int(11) NOT NULL,
-  `poids` float NOT NULL
+                           `id` int(11) NOT NULL,
+                           `titre` text NOT NULL,
+                           `description` text NOT NULL,
+                           `categorie` int(11) NOT NULL,
+                           `poids` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -83,11 +83,11 @@ CREATE TABLE `produit` (
 --
 
 INSERT INTO `produit` (`id`, `titre`, `description`, `categorie`, `poids`) VALUES
-(1, 'Crème', 'Une crème hydratante et parfumée qui rend la peau douce', 1, 0.3),
-(2, 'Savon', 'Un savon qui respecte la peau', 1, 0.2),
-(3, 'Shampoing', 'Shampoing doux et démêlant', 1, 0.4),
-(4, 'Bracelet', 'Un bracelet en tissu aux couleurs plaisantes', 2, 0.15),
-(5, 'Tableau', 'Aquarelle ou peinture à l\''huile', 3, 0.6),
+                                                                               (1, 'Crème', 'Une crème hydratante et parfumée qui rend la peau douce', 1, 0.3),
+                                                                               (2, 'Savon', 'Un savon qui respecte la peau', 1, 0.2),
+                                                                               (3, 'Shampoing', 'Shampoing doux et démêlant', 1, 0.4),
+                                                                               (4, 'Bracelet', 'Un bracelet en tissu aux couleurs plaisantes', 2, 0.15),
+                                                                               (5, 'Tableau', 'Aquarelle ou peinture à l\'huile', 3, 0.6),
 (6, 'Essuie-main', 'Utile au quotidien', 4, 0.45),
 (7, 'Gel', 'Gel hydroalcoolique et Antibactérien', 4, 0.25),
 (8, 'Masque', 'masque chirurgical jetable categorie 1', 4, 0.35),
@@ -160,11 +160,11 @@ COMMIT;
 CREATE TABLE `commande` (
   `idCommande` int(11) NOT NULL,
   `idBoite` int(11) NOT NULL,
-  'idClient' int(11) NOT NULL,
+  `idClient` int(11) NOT NULL,
   `couleurCommande` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE 'commandeProduit' (
+CREATE TABLE `commandeProduit` (
   `idCommande` int(11) NOT NULL,
   `idProduit` int(11) NOT NULL,
   `quantite` int(11) NOT NULL
