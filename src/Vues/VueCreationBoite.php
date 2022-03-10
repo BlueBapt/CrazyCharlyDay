@@ -3,7 +3,7 @@
 namespace custumbox\Vues;
 
 class VueCreationBoite extends Vue{
-    public $categories;
+    public $categories = null;
 
     public function __construct($c, $rq){
         parent::__construct("", $c, $rq);
@@ -67,6 +67,8 @@ class VueCreationBoite extends Vue{
                 
                 const contenu = []
                 const poid = 0
+                
+              
               
                 const choix = document.querySelectorAll(".case")
                 const com = document.querySelector(".com")
@@ -92,7 +94,7 @@ class VueCreationBoite extends Vue{
                 p1.push(new produit(7, 1, "assets/img/produits/"+7+".jpg"))
                 p1.push(new produit(8, 1, "assets/img/produits/"+8+".jpg"))
                 p1.push(new produit(9, 1, "assets/img/produits/"+9+".jpg"))
-                p1.push(new produit(10, 1, "assets/img/produits/"10+".jpg"))
+                p1.push(new produit(10, 1, "assets/img/produits/"+10+".jpg"))
                 p1.push(new produit(11, 1, "assets/img/produits/"+11+".jpg"))
                 p1.push(new produit(12, 1, "assets/img/produits/"+12+".jpg"))
                 p1.push(new produit(13, 1, "assets/img/produits/"+13+".jpg"))
@@ -113,19 +115,6 @@ class VueCreationBoite extends Vue{
                     //let display = []
                     for (let i = 0; i < p1.length; i++) {
                         if (p1[i].categorie == a) {
-                            /*
-                            var div = document.createElement("div")
-                            div.id = 'imageCateg'
-                            div.draggable = 'true'
-                            div.style.width = 8+"em"
-                            div.style.height = 8+"em"
-                            //div.style.backgroundImage = "url(" + p1[i].path + ")"
-                            div.innerHTML += "<img src='" + p1[i].path+ "' id='" + p1[i].nom + "' draggable='true'>"
-                            com.appendChild(div)
-                            div.addEventListener("dragstart", gradStart)
-                            div.addEventListener("dragend", gradEnd)
-                            
-                             */
                              var myImg = new Image(100, 100)
                              myImg.src = p1[i].path
                              myImg.id = 'imageCateg'
