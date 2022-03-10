@@ -31,14 +31,14 @@ class VueRecap extends Vue{
         $tableauString=serialize($this->produitsListe);
 
         $html = <<<HTML
-            <h1> Récap </h1>
-            $tableau
-            <h1>Boite</h1>
-            Taille de la boite : $taille
+            <h1> Récapitulatif </h1>
+            <?php $tableau
+            <h1><br>Boîte</h1>
+            Taille de la boîte : $taille
             
         HTML;
         $html .= <<<HTML
-            <h1>Coordonées</h1>
+            <h1><br>Coordonées</h1>
             
 
             
@@ -46,7 +46,7 @@ class VueRecap extends Vue{
                 <fieldset>
                     <div class="ligne">
                         <label>Nom</label><input id="nom" name="nom" type="text" required>
-                        <label>Prenom</label><input id="prenom" name="prenom" type="text" required>
+                        <label>Prénom</label><input id="prenom" name="prenom" type="text" required>
                     </div>
                     <input class="cacher" name="choix" type="text" value="$tableauString"></input>
                     <div class="ligne"><label>Adresse</label><input id="adresse" name="adresse" type="text" required></div>
@@ -54,6 +54,9 @@ class VueRecap extends Vue{
                 </fieldset>
             </form>
             <style>
+                body{
+                    text-align: center;
+                }
                 fieldset{
                     display:flex;
                     display: -webkit-flex;
