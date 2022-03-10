@@ -20,9 +20,14 @@ class VuePersonalisationBoite extends Vue{
             
             <form class="formulaire" method="post" action="recap">
                 <fieldset>
-                    <input id="couleur" class="couleur" type="color">
+                    <input id="couleur" class="couleur" type="color" required>
                     <img src="https://img.myloview.fr/papiers-peints/boite-de-papier-vecteur-de-dessin-anime-et-illustration-noir-et-blanc-dessines-a-la-main-style-de-croquis-isole-sur-fond-blanc-400-111169455.jpg">
-                    <textarea id="texte"></textarea>
+                    <textarea id="texte" required maxlength="100" placeholder="Entrez votre message"></textarea>
+                    <textarea id class="cacher">
+            HTML;
+        $html=$html.$this->donnees;
+        $html=$html.<<<HTML
+                    </textarea>
                     <input type="submit" value="Valider">
                 </fieldset>
                 
@@ -36,6 +41,9 @@ class VuePersonalisationBoite extends Vue{
                 }
                 form{
                     text-align: center;
+                }
+                .cacher{
+                    display: none;
                 }
                 .couleur{
                     width:70%;

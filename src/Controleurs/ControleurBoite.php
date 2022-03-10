@@ -29,7 +29,11 @@ class ControleurBoite {
 
     public function personaliserBoite(Request $req, Response $resp, $args)
     {
-        $infoCommande = unserialize($_POST["choix"]);
+        if(!isset($_POST["choix"])){
+            $infoCommande="super";
+        }else {
+            $infoCommande = $_POST["choix"];
+        }
         $vue = new Vues\VuePersonalisationBoite($this->container, $req);
         $vue->donnees=$infoCommande;
         $resp->getBody()->write($vue->render());
