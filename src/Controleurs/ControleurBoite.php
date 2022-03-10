@@ -8,6 +8,9 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use custumbox\Vues as Vues;
 
+use custumbox\models\Client as Client;
+use custumbox\models\Boite as Boite;
+
 
 class ControleurBoite {
 
@@ -28,6 +31,8 @@ class ControleurBoite {
         return $resp;
     }
 
+
+
     public function personaliserBoite(Request $req, Response $resp, $args)
     {
         if(!isset($_POST["choix"])){
@@ -45,6 +50,41 @@ class ControleurBoite {
     {
         $vue = new Vues\VueFinalisationBoite($this->container, $req);
         $resp->getBody()->write($vue->render());
+
+        if(isset($_POST["prenom"]) && isset($_POST["nom"]) && isset($_POST["adresse"])){
+            
+            //enregistrer le client
+            
+            $prenom = $_POST["prenom"];
+            $nom = $_POST["nom"];
+            $adresse = $_POST["adresse"];
+            $client = new Client();
+            $client->nom = $nom;
+            $client->prenom = $prenom;
+            $client->adresse = $adresse;
+            $client->save();
+
+            //enregistrer la boite
+
+            $b = $_POST["choix"];
+            $taille = $b[0];
+            $poids = $_POST["poids"];
+
+            $boite = new Boite();
+            $boite->taille = $taille;
+            $boite->poids = $poids;
+            $boite->save();
+
+            //enregistrer la commande
+
+            $commande = new Commande();
+            $commande->idClient = $client->id;
+            $commande->idBoite = $boite->id;
+            $commande->couleurCommande = $_POST["couleur"];
+            $commande->save();
+
+        }
+
         return $resp;
     }
 

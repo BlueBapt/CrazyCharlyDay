@@ -83,11 +83,11 @@ CREATE TABLE `produit` (
 --
 
 INSERT INTO `produit` (`id`, `titre`, `description`, `categorie`, `poids`) VALUES
-                                                                               (1, 'Crème', 'Une crème hydratante et parfumée qui rend la peau douce', 1, 0.3),
-                                                                               (2, 'Savon', 'Un savon qui respecte la peau', 1, 0.2),
-                                                                               (3, 'Shampoing', 'Shampoing doux et démêlant', 1, 0.4),
-                                                                               (4, 'Bracelet', 'Un bracelet en tissu aux couleurs plaisantes', 2, 0.15),
-                                                                               (5, 'Tableau', 'Aquarelle ou peinture à l\'huile', 3, 0.6),
+(1, 'Crème', 'Une crème hydratante et parfumée qui rend la peau douce', 1, 0.3),
+(2, 'Savon', 'Un savon qui respecte la peau', 1, 0.2),
+(3, 'Shampoing', 'Shampoing doux et démêlant', 1, 0.4),
+(4, 'Bracelet', 'Un bracelet en tissu aux couleurs plaisantes', 2, 0.15),
+(5, 'Tableau', 'Aquarelle ou peinture à l\'huile', 3, 0.6),
 (6, 'Essuie-main', 'Utile au quotidien', 4, 0.45),
 (7, 'Gel', 'Gel hydroalcoolique et Antibactérien', 4, 0.25),
 (8, 'Masque', 'masque chirurgical jetable categorie 1', 4, 0.35),
@@ -169,3 +169,37 @@ CREATE TABLE `commandeProduit` (
   `idProduit` int(11) NOT NULL,
   `quantite` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE 'client' (
+  'idClient' int(11) NOT NULL,
+  'nomClient' text NOT NULL,
+  'prenomClient' text NOT NULL,
+  'adresseClient' text NOT NULL
+)
+
+ALTER TABLE 'client'
+  ADD PRIMARY KEY (`idClient`);
+
+CREATE TABLE 'compte' (
+  'idCompte' int(11) NOT NULL,
+  'nomStructure' text NOT NULL,
+  'idClient' int(11) NOT NULL
+)
+
+ALTER TABLE 'compte'
+  ADD PRIMARY KEY (`idCompte`);
+
+ALTER TABLE 'compte'
+  ADD CONSTRAINT 'compte_ibfk_1' FOREIGN KEY (`idClient`) REFERENCES 'client' (`idClient`);
+
+CREATE TABLE 'commentaire' (
+  'idCommentaire' int(11) NOT NULL,
+  'idCommande' int(11) NOT NULL,
+  'message' text NOT NULL
+)
+
+ALTER TABLE 'commentaire'
+  ADD PRIMARY KEY (`idCommentaire`);
+
+ALTER TABLE 'commentaire'
+  ADD CONSTRAINT 'commentaire_ibfk_1' FOREIGN KEY (`idCommande`) REFERENCES 'commande' (`idCommande`);

@@ -1,0 +1,87 @@
+body{
+    background-color: #5c636a;
+    display: block;
+}
+
+.choix{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.case{
+    border: 1px solid black;
+    width: 10em;
+    text-align: center;
+}
+
+.case > img {
+    width: 100%;
+    height: 90%;
+}
+
+.case > p{
+    background-color: white;
+}
+
+.toolbar{
+    background-color: white;
+    height: 9em;
+    display: flex;
+    flex-direction: row;
+    width: calc(10em * 5);
+    margin-left: 25%;
+}
+
+.affichage{
+    background-color: white;
+    width: calc(10em * 5);
+    height: 15em;
+    margin-left: 25%;
+    margin-top: 2em;
+    border-radius: .3em;
+}
+
+#textAffichage{
+    font-size: small;
+    height: .5em;
+    margin-top: 0;
+}
+
+.commande{
+    background: url("../assets/box.jpg");
+    width: calc(10em * 5);
+    height: 15em;
+    margin-left: 25%;
+    margin-top: 1em;
+    border-radius: .3em;
+}
+
+.box{
+    width: 25em;
+    height: 5em;
+    margin-left: 25%;
+    margin-top: 1em;
+    border-radius: .3em;
+}
+
+.box > p{
+    background-color: white;
+    color: gray;
+    font-size: xx-large;
+    border: 1px solid gray;
+}
+
+#vcom{
+    font-style: oblique;
+    font-weight: bold;
+    text-decoration: underline;
+    color: white;
+    background-color: #ba0202;
+    width: 8em;
+}
+
+#imageCateg{
+    border: #6c757d solid 2px;
+    margin-right: 1em;
+}
