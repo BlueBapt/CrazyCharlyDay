@@ -72,7 +72,7 @@ $app->get(
 )->setName('finaliserboite');
 
 $app->post(
-    'finalisation',
+    'finaliserboite',
     function (Request $req, Response $resp, $args) {
         //
     }
