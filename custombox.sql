@@ -156,3 +156,16 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+CREATE TABLE `commande` (
+  `idCommande` int(11) NOT NULL,
+  `idBoite` int(11) NOT NULL,
+  'idClient' int(11) NOT NULL,
+  `couleurCommande` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE 'commandeProduit' (
+  `idCommande` int(11) NOT NULL,
+  `idProduit` int(11) NOT NULL,
+  `quantite` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
