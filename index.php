@@ -93,6 +93,14 @@ $app->post(
     }
 )->setName('finaliser');
 
+$app->get(
+    '/voircommandes',
+    function (Request $req, Response $resp, $args) {
+        $c = new ControleurBoite($this, $req);
+        return $c->afficherCommandes($req, $resp, $args);
+    }
+)->setName('finaliser');
+
 //fin de route
 
 $app->run();

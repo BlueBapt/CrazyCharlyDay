@@ -122,7 +122,9 @@ class ControleurBoite {
 
     public function afficherCommandes(Request $req, Response $resp, $args)
     {
-
+        $vue = new Vues\VueCommandes($this->container, $req, "");
+        $resp->getBody()->write($vue->render());
+        return $resp;
     }
 
 
