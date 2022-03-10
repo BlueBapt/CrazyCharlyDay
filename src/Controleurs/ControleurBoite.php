@@ -3,6 +3,7 @@
 
 namespace custumbox\Controleurs;
 
+use custumbox\models\Commande;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use custumbox\Vues as Vues;
@@ -30,7 +31,7 @@ class ControleurBoite {
     public function personaliserBoite(Request $req, Response $resp, $args)
     {
         if(!isset($_POST["choix"])){
-            $infoCommande="super";
+            $infoCommande=serialize([1 => "petit" ,2 => ["objet1", "qty1"], 3 => ["objet2", "qty2"]]);
         }else {
             $infoCommande = $_POST["choix"];
         }
@@ -47,15 +48,24 @@ class ControleurBoite {
         return $resp;
     }
 
+    public function commenterBoite(Request $req, Response $resp, $args){
+        $commande = Commande::where('token', '=', $args["token"])->first();
+        echo "----" . $commande["couleurCommande"];
+        $vue = new Vues\VueCommentaire($this->container, $req, [1 => ["aaa", "aaa", "aaa"], 2 => ["bbb", "bbb", "bbb"]]);
+        $resp->getBody()->write($vue->render());
+        return $resp;
+    }
+
     public function recap(Request $req, Response $resp, $args)
     {
         if(isset($_POST["choix"]) && isset($_POST["couleur"]) && isset($_POST["texte"])){
-            $tab = $_POST["choix"];
+            $tab = unserialize($_POST["choix"]);
             $boite = [$_POST["couleur"],$_POST["texte"]];
         }else{
-            $tab=[1 => ["aaa", "aaa"], 2 => ["bbb", "bbb"]];
+            $tab=[1 => ["petit",0] ,2 => ["objet1", "qty1"], 3 => ["objet2", "qty2"]];
             $boite = ["rouge","bojour"];
         }
+        //$tab=[1 => "petit" ,2 => ["objet1", "qty1"], 3 => ["objet2", "qty2"]];
 
         $vue = new Vues\VueRecap($this->container, $req, $tab, $boite);
 
