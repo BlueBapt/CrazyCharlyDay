@@ -26,7 +26,7 @@ class ControleurBoite {
     public function createBox(Request $req, Response $resp, $args)
     {
         // Rendu
-        $vue = new Vues\VueCreationBoite($this->container, $req);
+        $vue = new Vues\VueCreationBoite($this->container, $req,$args);
         $resp->getBody()->write($vue->render());
         return $resp;
     }
