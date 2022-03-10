@@ -43,6 +43,7 @@ class ComposerStaticInitbe12308b5fd317ef577c1846c5b7c1e6
             'Symfony\\Component\\Translation\\' => 30,
             'Symfony\\Component\\String\\' => 25,
             'Symfony\\Component\\Console\\' => 26,
+            'Style\\' => 6,
             'Slim\\' => 5,
         ),
         'P' => 
@@ -124,6 +125,10 @@ class ComposerStaticInitbe12308b5fd317ef577c1846c5b7c1e6
         'Symfony\\Component\\Console\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
+        ),
+        'Style\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/CssManager',
         ),
         'Slim\\' => 
         array (
