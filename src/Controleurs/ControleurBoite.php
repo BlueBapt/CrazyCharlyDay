@@ -63,7 +63,7 @@ class ControleurBoite {
             $boite = [$_POST["couleur"],$_POST["texte"]];
         }else{
             $tab=[1 => "petit" ,2 => ["objet1", "qty1"], 3 => ["objet2", "qty2"]];
-            $boite = ["rouge","bojour"];
+            $boite = ["#998844","bojour"];
         }
         //$tab=[1 => "petit" ,2 => ["objet1", "qty1"], 3 => ["objet2", "qty2"]];
 
@@ -71,5 +71,15 @@ class ControleurBoite {
 
         $resp->getBody()->write($vue->render());
         return $resp;
+    }
+
+    public function afficherCommandes(Request $req, Response $resp, $args)
+    {
+
+    }
+
+
+    public function recupererCategories(){
+
     }
 }
