@@ -2,15 +2,16 @@
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use App\Bd\ConnexionFactory as ConnexionFactory;
+use custumbox\Bd\ConnexionFactory as ConnexionFactory;
+use custumbox\Vues\VueAccueil as VueAccueil;
 
 require __DIR__ . '/vendor/autoload.php';
 
 session_start();
-ConnexionFactory::setConfig("conf.ini.dist");
+/*ConnexionFactory::setConfig("conf.ini.dist");
 $db = ConnexionFactory::makeConnexion();
 $db->setAsGlobal();
-$db->bootEloquent();
+$db->bootEloquent();*/
 
 $configuration = ['settings' => [] ] ;
 $c = new \Slim\Container($configuration);

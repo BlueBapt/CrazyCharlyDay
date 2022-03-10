@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Bd; 
+namespace custumbox\Bd;
 
 use Illuminate\Database\Capsule\Manager as DB;
 

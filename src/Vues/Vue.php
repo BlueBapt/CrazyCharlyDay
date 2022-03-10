@@ -38,6 +38,7 @@ abstract class Vue{
                 <header> 
                 </header>
                 <body>
+                    $this->content
                 </body>
             <html>
         HTML;
