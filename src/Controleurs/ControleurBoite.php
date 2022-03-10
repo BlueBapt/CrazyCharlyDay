@@ -122,6 +122,7 @@ class ControleurBoite {
 
     public function afficherCommandes(Request $req, Response $resp, $args)
     {
+        echo "aled";
         $vue = new Vues\VueCommandes($this->container, $req, "");
         $resp->getBody()->write($vue->render());
         return $resp;
