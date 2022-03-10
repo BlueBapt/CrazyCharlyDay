@@ -25,7 +25,7 @@ class VueCommandes extends Vue
         $res = "<table>";
         $res .= "<tbody>";
         echo "avant premier select";
-        $this->commandes=Commande::select("*")->get();
+        $this->commandes=Commande::all();
         echo "apres premier select";
         foreach($this->commandes as $row){
             $res .= "<tr>";
