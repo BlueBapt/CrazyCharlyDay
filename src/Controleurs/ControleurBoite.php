@@ -3,6 +3,7 @@
 
 namespace custumbox\Controleurs;
 
+use custumbox\models\Commande;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use custumbox\Vues as Vues;
@@ -43,6 +44,14 @@ class ControleurBoite {
     public function finaliser(Request $req, Response $resp, $args)
     {
         $vue = new Vues\VueFinalisationBoite($this->container, $req);
+        $resp->getBody()->write($vue->render());
+        return $resp;
+    }
+
+    public function commenterBoite(Request $req, Response $resp, $args){
+        $commande = Commande::where('token', '=', $args["token"])->first();
+        echo "----" . $commande["couleurCommande"];
+        $vue = new Vues\VueCommentaire($this->container, $req, [1 => ["aaa", "aaa", "aaa"], 2 => ["bbb", "bbb", "bbb"]]);
         $resp->getBody()->write($vue->render());
         return $resp;
     }
