@@ -65,23 +65,20 @@ class ConstructHTML {
      * @return string
      */
     public static function createTable(Array $content) : string {
-        echo "yo";
         $res = "<table>";
         $res .= "<tbody>";
         $premiereLigne = true;
-        echo "avant for";
         foreach($content as $row){
-            echo "dans for";
-            //if(!$premiereLigne) {
+            if(!$premiereLigne) {
                 $res .= "<tr>";
                 foreach ($row as $column) {
                     $res .= "<td> $column </td>";
                 }
                 $res .= "</tr>";
-                /*
+
             }else{
                 $premiereLigne=false;
-            }*/
+            }
         }
 
         $res .= "</tbody>";
