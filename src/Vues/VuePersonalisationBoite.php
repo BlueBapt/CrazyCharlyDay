@@ -18,12 +18,12 @@ class VuePersonalisationBoite extends Vue{
         $html = <<<HTML
             <h1> Veuillez choisir la couleur de votre boite </h1>
             
-            <form class="formulaire" method="post" action="recap">
+            <form class="formulaire" method="post" action="recapitulatif">
                 <fieldset>
-                    <input id="couleur" class="couleur" type="color" required>
+                    <input id="couleur" name="couleur" class="couleur" type="color" required>
                     <img src="https://img.myloview.fr/papiers-peints/boite-de-papier-vecteur-de-dessin-anime-et-illustration-noir-et-blanc-dessines-a-la-main-style-de-croquis-isole-sur-fond-blanc-400-111169455.jpg">
-                    <textarea id="texte" required maxlength="100" placeholder="Entrez votre message"></textarea>
-                    <textarea id class="cacher">
+                    <textarea id="texte" name="texte" required maxlength="100" placeholder="Entrez votre message"></textarea>
+                    <textarea id="choix" name="choix" class="cacher">
             HTML;
         $html=$html.$this->donnees;
         $html=$html.<<<HTML

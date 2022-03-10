@@ -50,6 +50,7 @@ $app->post(
     }
 );
 
+// A ENLEVER APRES
 $app->get(
     '/recapitulatif',
     function (Request $req, Response $resp, $args) {
@@ -61,17 +62,26 @@ $app->get(
 $app->post(
     '/recapitulatif',
     function (Request $req, Response $resp, $args) {
-        //
+        $c = new ControleurBoite($this, $req);
+        return $c->recap($req, $resp, $args);
     }
 );
-
+//a enlever apres
 $app->get(
-    '/finaliserboite',
+    '/personaliserboite',
     function (Request $req, Response $resp, $args) {
         $c = new ControleurBoite($this, $req);
-        return $c->finaliser($req, $resp, $args);
+        return $c->personaliserBoite($req, $resp, $args);
     }
-)->setName('finaliserboite');
+)->setName('personaliserboite');
+
+$app->post(
+    '/personaliserboite',
+    function (Request $req, Response $resp, $args) {
+        $c = new ControleurBoite($this, $req);
+        return $c->personaliserBoite($req, $resp, $args);
+    }
+)->setName('personaliserboite');
 
 $app->post(
     '/finaliserboite',

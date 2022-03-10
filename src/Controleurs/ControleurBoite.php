@@ -49,7 +49,16 @@ class ControleurBoite {
 
     public function recap(Request $req, Response $resp, $args)
     {
-        $vue = new Vues\VueRecap($this->container, $req, [1 => ["aaa", "aaa", "aaa"], 2 => ["bbb", "bbb", "bbb"]], "");
+        if(isset($_POST["choix"]) && isset($_POST["couleur"]) && isset($_POST["texte"])){
+            $tab = $_POST["choix"];
+            $boite = [$_POST["couleur"],$_POST["texte"]];
+        }else{
+            $tab=[1 => ["aaa", "aaa"], 2 => ["bbb", "bbb"]];
+            $boite = ["rouge","bojour"];
+        }
+
+        $vue = new Vues\VueRecap($this->container, $req, $tab, $boite);
+
         $resp->getBody()->write($vue->render());
         return $resp;
     }

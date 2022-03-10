@@ -26,12 +26,55 @@ class VueRecap extends Vue{
 
     public function createContent() : string{
         // On a besoin de récupérer chaque titre de produits, la quantité et le poids
-        $tableau = static::getRecap($this->produitsListe);
+        //$tableau = static::getRecap($this->produitsListe);
+
         $html = <<<HTML
             <h1> Récap </h1>
-            $tableau
-            <h1>Coordonées</h1>
+            
+            <h1>Boite</h1>
+            Taille de la boite : 
+            
         HTML;
+        $html .= <<<HTML
+            <h1>Coordonées</h1>
+            
+
+            
+            <form class="formulaire" method="post" action="finaliserboite">
+                <fieldset>
+                    <div class="ligne">
+                        <label>Nom</label><input id="nom" type="text" required>
+                        <label>Prenom</label><input id="prenom" type="text" required>
+                    </div>
+                    <div class="ligne"><label>Adresse</label><input id="adresse" type="text" required></div>
+                    <input class="ligne" type="submit" value="Valider">
+                </fieldset>
+            </form>
+            <style>
+                fieldset{
+                    display:flex;
+                    display: -webkit-flex;
+                    align-items: center;
+                    flex-direction: column;
+                }
+                .ligne{
+                    margin-bottom: 1em;
+                    width:70%;
+                }
+                form{
+                    text-align: center;
+                }
+                label{
+                    margin-right: 1em;
+                    margin-left: 0.5em;
+                }
+                .cacher{
+                    display: none;
+                }
+                
+                
+            </style>
+            HTML;
         return $html;
     }
 
