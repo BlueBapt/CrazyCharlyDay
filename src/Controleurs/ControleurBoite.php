@@ -30,7 +30,7 @@ class ControleurBoite {
         $categories = Produit::select("categorie")->get();
 
         // Rendu
-        $vue = new Vues\VueCreationBoite($this->container, $req, $categories);
+        $vue = new Vues\VueCreationBoite($this->container, $req,$categories);
         $resp->getBody()->write($vue->render());
         return $resp;
     }
