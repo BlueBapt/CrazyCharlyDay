@@ -34,7 +34,7 @@ class VueAccueil extends Vue{
                     <div class="col-lg-8 text-center">
                         <h2 class="text-white mt-0">Atelier 17.91</h2>
                         <hr class="divider divider-light" />
-                        <p class="text-white-75 mb-4">Pour un quotidien naturel et respectueux de la 🌍 <br> Astuces 100% Green <br> Upcycling vêtements | bijoux <br> Tutos beauté & produits ménagers <br> Décoration </p>
+                        <p class="text-white-75 mb-4">Pour un quotidien naturel et respectueux de la 🌍 <br> Astuces 100% Green <img src="assets/img/ecodigital.png" width="28em" height="23em"> <br> Upcycling vêtements | bijoux <br> Tutos beauté & produits ménagers <br> Décoration </p>
                     </div>
                 </div>
             </div>
