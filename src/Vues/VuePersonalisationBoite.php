@@ -16,7 +16,7 @@ class VuePersonalisationBoite extends Vue{
 
     public function createContent() : string{
         $html = <<<HTML
-            <h1 style="color:#DDC484; text-align: center"> Veuillez choisir la couleur de votre boite </h1>
+            <h1 style="color:#47aca4; text-align: center"> Veuillez choisir la couleur de votre boite </h1>
             
             <form class="formulaire" method="post" action="recapitulatif">
                 <fieldset>
@@ -34,7 +34,7 @@ class VuePersonalisationBoite extends Vue{
             </form>
             <style>
                 body{
-                    background-color: #47aca4;
+                    background-color: white;
                 }
                 fieldset{
                     display:flex;
