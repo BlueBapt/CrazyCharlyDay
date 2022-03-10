@@ -17,13 +17,9 @@ $c = new \Slim\Container($configuration);
 
 $app = new \Slim\App;
 
-$app->get('/liste/{id}', function (Request $req, Response $resp, $args) {
-    $controleur = new ControleurListe($this);
-    return $controleur->getList($req, $resp, $args);
-})->setName("liste");
-$app->post('/liste/{id}', function (Request $req, Response $resp, $args) {
-    $controleur = new ControleurListe($this);
-    return $controleur->getList($req, $resp, $args);
-});
+$app->get('/accueil', function (Request $req, Response $resp, $args) {
+    $acc = new VueAccueil($this, $req);
+    return $acc->render();
+})->setName('accueil');
 
 $app->run();

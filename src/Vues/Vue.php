@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\Vues; 
+namespace custumbox\Vues;
 
 abstract class Vue{
 
