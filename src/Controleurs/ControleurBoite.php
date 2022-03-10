@@ -26,4 +26,13 @@ class ControleurListe {
         $resp->getBody()->write($vue->render());
         return $resp;
     }
+
+    public function personaliserBoite(Request $req, Response $resp, $args)
+    {
+        $infoCommande = unserialize($_POST["choix"]);
+        $vue = new Vues\VueChoixCouleurBoite($this->container, $req);
+        $vue->donnees=$infoCommande;
+        $resp->getBody()->write($vue->render($infoCommande));
+        return $resp;
+    }
 }
