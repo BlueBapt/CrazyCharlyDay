@@ -25,9 +25,12 @@ abstract class Vue{
 
     public function render(){ 
         $this->content = $this->createContent(); 
-        $css = $this->linkCss(); 
+        $css = $this->linkCss();
 
         $container = $this->container ;
+
+        $accueil =  $container->router->pathFor( 'accueil' ) ;
+        $creation =  $container->router->pathFor( 'creerboite' ) ;
 
         return <<<HTML
             <!DOCTYPE html> 
@@ -62,14 +65,15 @@ abstract class Vue{
                             <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                             <div class="collapse navbar-collapse" id="navbarResponsive">
                                 <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                                    <li class="nav-item"><a class="nav-link" href="#about">Contact</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="$accueil">Accueil</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="$creation">Créer une boite</a></li>
                                 </ul>
                             </div>
                         </div>
                     </nav>
-                    $this->content
+                    <div class="content">
+                        $this->content
+                    </div>
                     <!-- Footer-->
                     <footer class="bg-light py-5">
                         <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; Atelier 17.91 2022</div></div>
