@@ -45,7 +45,7 @@ $app->get(
 )->setName('creerboite');
 
 $app->post(
-    'creerboite',
+    '/creerboite',
     function (Request $req, Response $resp, $args) {
         //
     }
@@ -60,7 +60,7 @@ $app->get(
 )->setName('recapitulatif');
 
 $app->post(
-    'recapitulatif',
+    '/recapitulatif',
     function (Request $req, Response $resp, $args) {
         //
     }
@@ -75,7 +75,7 @@ $app->get(
 )->setName('finaliserboite');
 
 $app->post(
-    'finaliserboite',
+    '/finaliserboite',
     function (Request $req, Response $resp, $args) {
         //
     }
