@@ -7,10 +7,10 @@ use custumbox\Vues\VueRecap as VueRecap;
 
 class VueCommandes extends Vue
 {
-    private $commandes;
 
     public function __construct($c, $rq, $commandes)
     {
+        echo "constructeur";
         parent::__construct("", $c, $rq);
     }
 
