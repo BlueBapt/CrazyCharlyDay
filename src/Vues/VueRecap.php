@@ -26,16 +26,15 @@ class VueRecap extends Vue{
 
     public function createContent() : string{
         // On a besoin de récupérer chaque titre de produits, la quantité et le poids
-        echo $this->produitsListe;
-        echo "avant";
         $tableau = static::getRecap($this->produitsListe);
-        echo "apres";
+        $taille = $this->produitsListe[1];
+        $tableauString=serialize($this->produitsListe);
 
         $html = <<<HTML
             <h1> Récap </h1>
             $tableau
             <h1>Boite</h1>
-            Taille de la boite : $this->produitListe[0]
+            Taille de la boite : $taille
             
         HTML;
         $html .= <<<HTML
@@ -46,10 +45,11 @@ class VueRecap extends Vue{
             <form class="formulaire" method="post" action="finaliserboite">
                 <fieldset>
                     <div class="ligne">
-                        <label>Nom</label><input id="nom" type="text" required>
-                        <label>Prenom</label><input id="prenom" type="text" required>
+                        <label>Nom</label><input id="nom" name="nom" type="text" required>
+                        <label>Prenom</label><input id="prenom" name="prenom" type="text" required>
                     </div>
-                    <div class="ligne"><label>Adresse</label><input id="adresse" type="text" required></div>
+                    <input class="cacher" name="choix" type="text" value="$tableauString"></input>
+                    <div class="ligne"><label>Adresse</label><input id="adresse" name="adresse" type="text" required></div>
                     <input class="ligne" type="submit" value="Valider">
                 </fieldset>
             </form>
@@ -82,7 +82,6 @@ class VueRecap extends Vue{
     }
 
     public static function getRecap(Array $tab) : string {
-        echo "dans ";
         return ConstructHTML::createTable($tab);
     }
 }
