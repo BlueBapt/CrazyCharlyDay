@@ -36,7 +36,7 @@ class VueRecap extends Vue{
             <?php $tableau
             <h1><br>Boîte</h1>
             Taille de la boite : $taille <br>
-            <div class="couleurBoite">Couleur de la boite : <div class="montrerCouleur"></div></div>
+            <?php<div class="couleurBoite">Couleur de la boite : <div class="montrerCouleur"></div></div>
             
         HTML;
         $html .= <<<HTML
@@ -83,7 +83,7 @@ class VueRecap extends Vue{
                     background-color: $couleur;
                     height:1.3em;
                     width:1.3em;
-                    
+                    margin: 0 auto;
                 }
                 .couleurBoite{
                     display: flex;
