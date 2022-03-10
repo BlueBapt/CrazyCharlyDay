@@ -12,7 +12,6 @@ class VueCommandes extends Vue
     public function __construct($c, $rq, $commandes)
     {
         parent::__construct("", $c, $rq);
-        $this->commandes = $commandes;
     }
 
     public function linkCss(): string
@@ -24,18 +23,21 @@ class VueCommandes extends Vue
     {
         $res = "<table>";
         $res .= "<tbody>";
+        $this->commandes=Commande::select("*")->get();
         foreach($this->commandes as $row){
             $res .= "<tr>";
-            $res .= "<td> $row->idCommande </td>";
-            //CommandeProduit
+            $prods=CommandeProduit::select("idProduit","quantite","idCommande")->where("idCommande","=","$row->idCommande")->get();
+            foreach ($prods as $p){
+                $res .= "<td> $row->idCommande </td>";
+                $res .= "<td> $p->idProduit </td>";
+                $res .= "<td> $p->quantite </td>";
+            }
             $res .= "</tr>";
         }
 
         $res .= "</tbody>";
         $res .= "</table>";
-        $html = <<<HTML
-            
-        HTML;
+        $html = $res;
 
         return $html;
     }
