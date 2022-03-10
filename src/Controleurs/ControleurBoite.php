@@ -35,4 +35,11 @@ class ControleurBoite {
         $resp->getBody()->write($vue->render());
         return $resp;
     }
+
+    public function finaliser(Request $req, Response $resp, $args)
+    {
+        $vue = new Vues\VueFinalisationBoite($this->container, $req);
+        $resp->getBody()->write($vue->render());
+        return $resp;
+    }
 }

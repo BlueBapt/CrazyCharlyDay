@@ -59,6 +59,30 @@ $app->get(
     }
 )->setName('recapitulatif');
 
+$app->post(
+    'recapitulatif',
+    function (Request $req, Response $resp, $args) {
+        //
+    }
+);
+
+$app->get(
+    '/finaliserboite',
+    function (Request $req, Response $resp, $args) {
+        $c = new ControleurBoite($this, $req);
+        return $c->finaliser($req, $resp, $args);
+    }
+)->setName('finaliserboite');
+
+$app->post(
+    'finalisation',
+    function (Request $req, Response $resp, $args) {
+        //
+    }
+);
+
+
+
 //fin de route
 
 $app->run();
