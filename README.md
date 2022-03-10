@@ -1,5 +1,5 @@
-# CrazyCharlyDay
+__CrazyCharlyDay__
 
-Equipe Anonymouse
+######Equipe Anonymouse
 
-Thomas, Robin, Théo, Arthur & Baptiste
+*Thomas, Robin, Théo, Arthur & Baptiste*
