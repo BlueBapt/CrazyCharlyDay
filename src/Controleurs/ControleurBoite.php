@@ -54,6 +54,8 @@ class ControleurBoite {
         if(isset($_POST["prenom"]) && isset($_POST["nom"]) && isset($_POST["adresse"])){
             
             //enregistrer le client
+
+            echo "uwu";
             
             $prenom = $_POST["prenom"];
             $nom = $_POST["nom"];
