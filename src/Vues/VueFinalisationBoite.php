@@ -14,7 +14,13 @@ class VueFinalisationBoite extends Vue{
 
     public function createContent() : string{
         $html = <<<HTML
-            <h1> Vue finalisation boite </h1>
+            <div class="finalisation-container">
+                <img class="finalisation-image" src="assets/favico.ico">
+                <div class="">
+                    <p class="thx-phrase">Merci d'avoir passé commande !</p>
+                    <a class="btn btn-light btn-xl" href="../">Retour à l'acceuil</a>
+                </div>
+            </div>
         HTML;
         return $html;
     }
