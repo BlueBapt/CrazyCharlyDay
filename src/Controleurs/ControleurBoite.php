@@ -29,16 +29,27 @@ class ControleurBoite {
 
     public function personaliserBoite(Request $req, Response $resp, $args)
     {
-        $infoCommande = unserialize($_POST["choix"]);
-        $vue = new Vues\VueChoixCouleurBoite($this->container, $req);
+        if(!isset($_POST["choix"])){
+            $infoCommande="super";
+        }else {
+            $infoCommande = $_POST["choix"];
+        }
+        $vue = new Vues\VuePersonalisationBoite($this->container, $req);
         $vue->donnees=$infoCommande;
-        $resp->getBody()->write($vue->render($infoCommande));
+        $resp->getBody()->write($vue->render());
         return $resp;
     }
 
     public function finaliser(Request $req, Response $resp, $args)
     {
         $vue = new Vues\VueFinalisationBoite($this->container, $req);
+        $resp->getBody()->write($vue->render());
+        return $resp;
+    }
+
+    public function recap(Request $req, Response $resp, $args)
+    {
+        $vue = new Vues\VueRecap($this->container, $req, [1 => ["aaa", "aaa", "aaa"], 2 => ["bbb", "bbb", "bbb"]], "");
         $resp->getBody()->write($vue->render());
         return $resp;
     }
