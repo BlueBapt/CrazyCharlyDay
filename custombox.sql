@@ -87,7 +87,7 @@ INSERT INTO `produit` (`id`, `titre`, `description`, `categorie`, `poids`) VALUE
 (2, 'Savon', 'Un savon qui respecte la peau', 1, 0.2),
 (3, 'Shampoing', 'Shampoing doux et démêlant', 1, 0.4),
 (4, 'Bracelet', 'Un bracelet en tissu aux couleurs plaisantes', 2, 0.15),
-(5, 'Tableau', 'Aquarelle ou peinture à l\'huile', 3, 0.6),
+(5, 'Tableau', 'Aquarelle ou peinture à l\''huile', 3, 0.6),
 (6, 'Essuie-main', 'Utile au quotidien', 4, 0.45),
 (7, 'Gel', 'Gel hydroalcoolique et Antibactérien', 4, 0.25),
 (8, 'Masque', 'masque chirurgical jetable categorie 1', 4, 0.35),
