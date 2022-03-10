@@ -3,8 +3,9 @@
 namespace custumbox\Vues;
 
 class VueCreationBoite extends Vue{
+    public $categories = null;
 
-    public function __construct($c, $rq){
+    public function __construct($c, $rq, $args){
         parent::__construct("", $c, $rq);
     }
 
@@ -65,6 +66,7 @@ class VueCreationBoite extends Vue{
                 commande.push("taille")
                 
                 const contenu = []
+                const poid = 0
                 
               
               
@@ -83,13 +85,10 @@ class VueCreationBoite extends Vue{
                 
                 let p1 = []
                 
-                for (let i = 0; i < 10; i++) {
+                for (let i = 0; i < 13; i++) {
                     let j = i+1
                     p1.push(new produit(j, 1, "assets/img/produits/"+j+".jpg"))
                 }
-                p1.push(new produit(11, 2, "assets/img/produits/"+11+".jpg"))
-                p1.push(new produit(12, 3, "assets/img/produits/"+12+".jpg"))
-                p1.push(new produit(13, 4, "assets/img/produits/"+13+".jpg"))
                 
                 for (const a of choix) {
                     a.addEventListener('click', (e) => {
@@ -132,8 +131,15 @@ class VueCreationBoite extends Vue{
                     }
                     //console.log(display)
                 }
-                function ajoutCommande() {
+                function ajoutCommande(e) {
+                    let categ = e.target.src
+                    let a = categ.split("/")
+                    a = a[a.length-1].split(".")
+                    a = a[0]
                     
+                    if (!contenu.includes(a) )
+                        contenu.push(p1[a-1])
+                        console.log(contenu)
                 }
                 
               </script>
