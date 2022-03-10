@@ -23,4 +23,6 @@ $app->get('/', function (Request $req, Response $resp, $args) {
     return $acc->render();
 })->setName('accueil');
 
+//fin de route
+
 $app->run();
