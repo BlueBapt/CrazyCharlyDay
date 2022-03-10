@@ -23,10 +23,14 @@ class VueCommandes extends Vue
     {
         $res = "<table>";
         $res .= "<tbody>";
+        echo "avant premier select";
         $this->commandes=Commande::select("*")->get();
+        echo "apres premier select";
         foreach($this->commandes as $row){
             $res .= "<tr>";
+            echo "apres premier select";
             $prods=CommandeProduit::select("idProduit","quantite","idCommande")->where("idCommande","=","$row->idCommande")->get();
+            echo "apres second select";
             foreach ($prods as $p){
                 $res .= "<td> $row->idCommande </td>";
                 $res .= "<td> $p->idProduit </td>";
