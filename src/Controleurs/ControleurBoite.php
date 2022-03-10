@@ -30,6 +30,8 @@ class ControleurBoite {
         return $resp;
     }
 
+
+
     public function personaliserBoite(Request $req, Response $resp, $args)
     {
         if(!isset($_POST["choix"])){
