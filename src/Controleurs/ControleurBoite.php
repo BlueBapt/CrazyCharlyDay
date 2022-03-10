@@ -62,7 +62,7 @@ class ControleurBoite {
             $tab = unserialize($_POST["choix"]);
             $boite = [$_POST["couleur"],$_POST["texte"]];
         }else{
-            $tab=[1 => ["petit",0] ,2 => ["objet1", "qty1"], 3 => ["objet2", "qty2"]];
+            $tab=[1 => "petit" ,2 => ["objet1", "qty1"], 3 => ["objet2", "qty2"]];
             $boite = ["rouge","bojour"];
         }
         //$tab=[1 => "petit" ,2 => ["objet1", "qty1"], 3 => ["objet2", "qty2"]];

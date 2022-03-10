@@ -54,7 +54,7 @@ $app->get(
 )->setName('recapitulatif');
 
 $app->post(
-    'recapitulatif',
+    '/recapitulatif',
     function (Request $req, Response $resp, $args) {
         $c = new ControleurBoite($this, $req);
         return $c->recap($req, $resp, $args);
