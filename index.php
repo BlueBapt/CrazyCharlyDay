@@ -1,6 +1,5 @@
 <?php
 
-use App\Controleurs\ControleurListe;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use custumbox\Bd\ConnexionFactory as ConnexionFactory;
@@ -20,7 +19,7 @@ $db->bootEloquent();*/
 
 $configuration = [
     'settings' => [
-    'displayErrorDetails' => true,],
+    'displayErrorDetails' => true],
     'imgPath' => 'img/',
 ];
 
@@ -28,13 +27,11 @@ $c = new \Slim\Container($configuration);
 
 $app = new \Slim\App;
 
-$app->get(
-    '/',
-    function (Request $req, Response $resp, $args) {
+$app->get('/', function (Request $req, Response $resp, $args) {
         $acc = new VueAccueil($this, $req);
         return $acc->render();
     }
-);
+)->setName("accueil");
 
 $app->get(
     '/creerboite',

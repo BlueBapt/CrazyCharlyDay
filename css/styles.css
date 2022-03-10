@@ -11339,8 +11339,8 @@ hr.divider-light {
   background-color: #fff;
 }
 
-body {
-  margin-top: 50px;
+.content {
+  margin-top: 100px;
 }
 
 #mainNav {
