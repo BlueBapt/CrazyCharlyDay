@@ -4,6 +4,8 @@
 namespace custumbox\Controleurs;
 
 use custumbox\models\Commande;
+use custumbox\models\CommandeProduit;
+use custumbox\models\Produit;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use custumbox\Vues as Vues;
@@ -25,8 +27,10 @@ class ControleurBoite {
      */
     public function createBox(Request $req, Response $resp, $args)
     {
+        $categories = Produit::select("categorie")->get();
+
         // Rendu
-        $vue = new Vues\VueCreationBoite($this->container, $req);
+        $vue = new Vues\VueCreationBoite($this->container, $req,$categories);
         $resp->getBody()->write($vue->render());
         return $resp;
     }
@@ -54,6 +58,8 @@ class ControleurBoite {
         if(isset($_POST["prenom"]) && isset($_POST["nom"]) && isset($_POST["adresse"])){
             
             //enregistrer le client
+
+            echo "uwu";
             
             $prenom = $_POST["prenom"];
             $nom = $_POST["nom"];
@@ -68,18 +74,13 @@ class ControleurBoite {
 
             $b = $_POST["choix"];
             $taille = $b[0];
-            $poids = $_POST["poids"];
-
-            $boite = new Boite();
-            $boite->taille = $taille;
-            $boite->poids = $poids;
-            $boite->save();
+            $id = Boite::select("*")->where("taille","=",$taille)->get()->first()->id;
 
             //enregistrer la commande
 
             $commande = new Commande();
             $commande->idClient = $client->id;
-            $commande->idBoite = $boite->id;
+            $commande->idBoite = $id;
             $commande->couleurCommande = $_POST["couleur"];
             $commande->save();
 
@@ -90,8 +91,15 @@ class ControleurBoite {
 
     public function commenterBoite(Request $req, Response $resp, $args){
         $commande = Commande::where('token', '=', $args["token"])->first();
-        echo "----" . $commande["couleurCommande"];
-        $vue = new Vues\VueCommentaire($this->container, $req, [1 => ["aaa", "aaa", "aaa"], 2 => ["bbb", "bbb", "bbb"]]);
+        $produitsCommande =  CommandeProduit::where('idCommande', "=", $commande["idCommande"])->get();
+        $produits = [];
+        foreach($produitsCommande as $row){
+            echo var_dump($row["idProduit"]);
+            $produit = Produit::where("id", "=", $row["idProduit"])->first();
+            $produits[$produit["id"]] =  [$produit["titre"], $produit["poids"], $row["quantite"]];
+        }
+        echo var_dump($produits);
+        $vue = new Vues\VueCommentaire($this->container, $req, $produits);
         $resp->getBody()->write($vue->render());
         return $resp;
     }
@@ -103,7 +111,7 @@ class ControleurBoite {
             $boite = [$_POST["couleur"],$_POST["texte"]];
         }else{
             $tab=[1 => "petit" ,2 => ["objet1", "qty1"], 3 => ["objet2", "qty2"]];
-            $boite = ["rouge","bojour"];
+            $boite = ["#998844","bojour"];
         }
         //$tab=[1 => "petit" ,2 => ["objet1", "qty1"], 3 => ["objet2", "qty2"]];
 
@@ -111,5 +119,15 @@ class ControleurBoite {
 
         $resp->getBody()->write($vue->render());
         return $resp;
+    }
+
+    public function afficherCommandes(Request $req, Response $resp, $args)
+    {
+
+    }
+
+
+    public function recupererCategories(){
+
     }
 }

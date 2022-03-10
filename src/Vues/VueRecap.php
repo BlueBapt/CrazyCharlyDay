@@ -29,12 +29,14 @@ class VueRecap extends Vue{
         $tableau = static::getRecap($this->produitsListe);
         $taille = $this->produitsListe[1];
         $tableauString=serialize($this->produitsListe);
+        $couleur = $this->boite[0];
 
         $html = <<<HTML
             <h1> Récapitulatif </h1>
             <?php $tableau
             <h1><br>Boîte</h1>
-            Taille de la boîte : $taille
+            Taille de la boite : $taille <br>
+            <div class="couleurBoite">Couleur de la boite : <div class="montrerCouleur"></div></div>
             
         HTML;
         $html .= <<<HTML
@@ -76,6 +78,16 @@ class VueRecap extends Vue{
                 }
                 .cacher{
                     display: none;
+                }
+                .montrerCouleur{
+                    background-color: $couleur;
+                    height:1.3em;
+                    width:1.3em;
+                    
+                }
+                .couleurBoite{
+                    display: flex;
+                    flex-direction: row;
                 }
                 
                 
