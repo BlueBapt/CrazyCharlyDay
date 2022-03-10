@@ -5,11 +5,11 @@ namespace custumbox\models;
 class Client extends \Illuminate\Database\Eloquent\Model {
 
     protected $table = 'client';
-    protected $primaryKey = 'idCommande';
+    protected $primaryKey = 'idClient';
     public $timestamps = false;
 
 
-    public function produit() {
-        return $this->hasMany('custumbox\models\Produit', 'id');
+    public function client() {
+        return $this->hasMany('custumbox\models\CLient', 'id');
     }
 }

@@ -86,13 +86,12 @@ $app->post(
 )->setName('personaliserboite');
 
 $app->post(
-    'finaliserboite',
+    '/finaliserboite',
     function (Request $req, Response $resp, $args) {
-        //
+        $c = new ControleurBoite($this, $req);
+        return $c->finaliser($req, $resp, $args);
     }
-);
-
-
+)->setName('finaliser');
 
 //fin de route
 
