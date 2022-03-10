@@ -27,11 +27,12 @@ class ControleurBoite {
         return $resp;
     }
 
-    public function recapBox(Request $req, Response $resp, $args)
+    public function personaliserBoite(Request $req, Response $resp, $args)
     {
-        // Rendu
-        $vue = new Vues\VueRecapBoite($this->container, $req);
-        $resp->getBody()->write($vue->render());
+        $infoCommande = unserialize($_POST["choix"]);
+        $vue = new Vues\VueChoixCouleurBoite($this->container, $req);
+        $vue->donnees=$infoCommande;
+        $resp->getBody()->write($vue->render($infoCommande));
         return $resp;
     }
 }
