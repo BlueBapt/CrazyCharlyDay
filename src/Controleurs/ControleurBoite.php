@@ -1,14 +1,14 @@
 <?php
 
 
-namespace App\Controleurs;
+namespace custumbox\Controleurs;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use custumbox\Vues as Vues;
 
 
-class ControleurListe {
+class ControleurBoite {
 
     private $container;
 
@@ -23,6 +23,14 @@ class ControleurListe {
     {
         // Rendu
         $vue = new Vues\VueCreationBoite($this->container, $req);
+        $resp->getBody()->write($vue->render());
+        return $resp;
+    }
+
+    public function recapBox(Request $req, Response $resp, $args)
+    {
+        // Rendu
+        $vue = new Vues\VueRecapBoite($this->container, $req);
         $resp->getBody()->write($vue->render());
         return $resp;
     }
