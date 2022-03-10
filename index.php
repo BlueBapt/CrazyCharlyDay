@@ -27,6 +27,8 @@ $c = new \Slim\Container($configuration);
 
 $app = new \Slim\App;
 
+//debut des routes
+
 $app->get('/', function (Request $req, Response $resp, $args) {
         $acc = new VueAccueil($this, $req);
         return $acc->render();
@@ -42,7 +44,7 @@ $app->get(
 )->setName('creerboite');
 
 $app->post(
-    'creerboite',
+    '/creerboite',
     function (Request $req, Response $resp, $args) {
         //
     }
@@ -82,7 +84,7 @@ $app->post(
 )->setName('personaliserboite');
 
 $app->post(
-    'finaliserboite',
+    '/finaliserboite',
     function (Request $req, Response $resp, $args) {
         //
     }

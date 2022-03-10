@@ -26,7 +26,8 @@ class VueRecap extends Vue{
 
     public function createContent() : string{
         // On a besoin de récupérer chaque titre de produits, la quantité et le poids
-        //$tableau = ConstructHTML::createTable($this->produitsListe);
+        //$tableau = static::getRecap($this->produitsListe);
+
         $html = <<<HTML
             <h1> Récap </h1>
             
@@ -75,5 +76,9 @@ class VueRecap extends Vue{
             </style>
             HTML;
         return $html;
+    }
+
+    public static function getRecap($tab) : string {
+        return ConstructHTML::createTable($tab);
     }
 }

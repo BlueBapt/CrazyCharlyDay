@@ -14,7 +14,6 @@ class VueAccueil extends Vue{
 
     public function createContent() : string{
         $html = <<<HTML
-
                 <body id="page-top">
                     <!-- Masthead-->
                     <header class="masthead">
