@@ -22,10 +22,21 @@ class VueCommandes extends Vue
 
     public function createContent(): string
     {
-        $tableau = VueRecap::getRecap($this->commandes);
+        $res = "<table>";
+        $res .= "<tbody>";
+        foreach($this->commandes as $row){
+            $res .= "<tr>";
+            $res .= "<td> $row->idCommande </td>";
+            //CommandeProduit
+            $res .= "</tr>";
+        }
+
+        $res .= "</tbody>";
+        $res .= "</table>";
         $html = <<<HTML
-            $tableau
+            
         HTML;
+
         return $html;
     }
 
