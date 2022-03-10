@@ -4,6 +4,8 @@
 namespace custumbox\Controleurs;
 
 use custumbox\models\Commande;
+use custumbox\models\CommandeProduit;
+use custumbox\models\Produit;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use custumbox\Vues as Vues;
@@ -25,8 +27,10 @@ class ControleurBoite {
      */
     public function createBox(Request $req, Response $resp, $args)
     {
+        $categories = Produit::select("categorie")->get();
+
         // Rendu
-        $vue = new Vues\VueCreationBoite($this->container, $req,$args);
+        $vue = new Vues\VueCreationBoite($this->container, $req,$categories);
         $resp->getBody()->write($vue->render());
         return $resp;
     }
@@ -87,8 +91,15 @@ class ControleurBoite {
 
     public function commenterBoite(Request $req, Response $resp, $args){
         $commande = Commande::where('token', '=', $args["token"])->first();
-        echo "----" . $commande["couleurCommande"];
-        $vue = new Vues\VueCommentaire($this->container, $req, [1 => ["aaa", "aaa", "aaa"], 2 => ["bbb", "bbb", "bbb"]]);
+        $produitsCommande =  CommandeProduit::where('idCommande', "=", $commande["idCommande"])->get();
+        $produits = [];
+        foreach($produitsCommande as $row){
+            echo var_dump($row["idProduit"]);
+            $produit = Produit::where("id", "=", $row["idProduit"])->first();
+            $produits[$produit["id"]] =  [$produit["titre"], $produit["poids"], $row["quantite"]];
+        }
+        echo var_dump($produits);
+        $vue = new Vues\VueCommentaire($this->container, $req, $produits);
         $resp->getBody()->write($vue->render());
         return $resp;
     }
