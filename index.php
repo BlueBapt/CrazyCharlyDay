@@ -67,12 +67,12 @@ $app->post(
 );
 
 $app->get(
-    '/finaliserboite',
+    '/personaliserboite',
     function (Request $req, Response $resp, $args) {
         $c = new ControleurBoite($this, $req);
-        return $c->finaliser($req, $resp, $args);
+        return $c->personaliserBoite($req, $resp, $args);
     }
-)->setName('finaliserboite');
+)->setName('personaliserboite');
 
 $app->post(
     'finalisation',
