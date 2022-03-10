@@ -28,6 +28,7 @@ class VueRecap extends Vue{
         // On a besoin de récupérer chaque titre de produits, la quantité et le poids
         $tableau = static::getRecap($this->produitsListe);
         $taille = $this->produitsListe[1];
+        $tableauString=serialize($this->produitsListe);
 
         $html = <<<HTML
             <h1> Récap </h1>
@@ -44,10 +45,11 @@ class VueRecap extends Vue{
             <form class="formulaire" method="post" action="finaliserboite">
                 <fieldset>
                     <div class="ligne">
-                        <label>Nom</label><input id="nom" type="text" required>
-                        <label>Prenom</label><input id="prenom" type="text" required>
+                        <label>Nom</label><input id="nom" name="nom" type="text" required>
+                        <label>Prenom</label><input id="prenom" name="prenom" type="text" required>
                     </div>
-                    <div class="ligne"><label>Adresse</label><input id="adresse" type="text" required></div>
+                    <input class="cacher" name="choix" type="text" value="$tableauString"></input>
+                    <div class="ligne"><label>Adresse</label><input id="adresse" name="adresse" type="text" required></div>
                     <input class="ligne" type="submit" value="Valider">
                 </fieldset>
             </form>
