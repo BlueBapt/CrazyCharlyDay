@@ -30,7 +30,7 @@ class ControleurBoite {
     public function personaliserBoite(Request $req, Response $resp, $args)
     {
         if(!isset($_POST["choix"])){
-            $infoCommande="super";
+            $infoCommande=serialize([1 => "petit" ,2 => ["objet1", "qty1"], 3 => ["objet2", "qty2"]]);
         }else {
             $infoCommande = $_POST["choix"];
         }
@@ -50,12 +50,13 @@ class ControleurBoite {
     public function recap(Request $req, Response $resp, $args)
     {
         if(isset($_POST["choix"]) && isset($_POST["couleur"]) && isset($_POST["texte"])){
-            $tab = $_POST["choix"];
+            $tab = unserialize($_POST["choix"]);
             $boite = [$_POST["couleur"],$_POST["texte"]];
         }else{
-            $tab=[1 => ["aaa", "aaa"], 2 => ["bbb", "bbb"]];
+            $tab=[1 => ["petit",0] ,2 => ["objet1", "qty1"], 3 => ["objet2", "qty2"]];
             $boite = ["rouge","bojour"];
         }
+        //$tab=[1 => "petit" ,2 => ["objet1", "qty1"], 3 => ["objet2", "qty2"]];
 
         $vue = new Vues\VueRecap($this->container, $req, $tab, $boite);
 

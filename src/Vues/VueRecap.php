@@ -14,9 +14,9 @@ class VueRecap extends Vue{
      * @param $produitsListe c'est une liste de la forme ["id" -> ["poids", "quantité", "titre"]]
      * @param $boite
      */
-    public function __construct($c, $rq, $produitsListe, $boite){
+    public function __construct($c, $rq, $prodListe, $boite){
         parent::__construct("", $c, $rq);
-        $this->produitsListe = $produitsListe;
+        $this->produitsListe = $prodListe;
         $this->boite = $boite;
     }
 
@@ -26,13 +26,16 @@ class VueRecap extends Vue{
 
     public function createContent() : string{
         // On a besoin de récupérer chaque titre de produits, la quantité et le poids
-        //$tableau = static::getRecap($this->produitsListe);
+        echo $this->produitsListe;
+        echo "avant";
+        $tableau = static::getRecap($this->produitsListe);
+        echo "apres";
 
         $html = <<<HTML
             <h1> Récap </h1>
-            
+            $tableau
             <h1>Boite</h1>
-            Taille de la boite : 
+            Taille de la boite : $this->produitListe[0]
             
         HTML;
         $html .= <<<HTML
@@ -78,7 +81,8 @@ class VueRecap extends Vue{
         return $html;
     }
 
-    public static function getRecap($tab) : string {
+    public static function getRecap(Array $tab) : string {
+        echo "dans ";
         return ConstructHTML::createTable($tab);
     }
 }

@@ -64,15 +64,24 @@ class ConstructHTML {
      * @param array $content -> doit etre de la forme [pdt1 -> [col1, col2, col3]]
      * @return string
      */
-    public static function createTable(array $content) : string {
+    public static function createTable(Array $content) : string {
+        echo "yo";
         $res = "<table>";
         $res .= "<tbody>";
+        $premiereLigne = true;
+        echo "avant for";
         foreach($content as $row){
-            $res .= "<tr>";
-            foreach($row as $column){
-                $res .= "<td> $column </td>";
-            }
-            $res .= "</tr>";
+            echo "dans for";
+            //if(!$premiereLigne) {
+                $res .= "<tr>";
+                foreach ($row as $column) {
+                    $res .= "<td> $column </td>";
+                }
+                $res .= "</tr>";
+                /*
+            }else{
+                $premiereLigne=false;
+            }*/
         }
 
         $res .= "</tbody>";
