@@ -27,6 +27,8 @@ $c = new \Slim\Container($configuration);
 
 $app = new \Slim\App;
 
+//debut des routes
+
 $app->get('/', function (Request $req, Response $resp, $args) {
         $acc = new VueAccueil($this, $req);
         return $acc->render();
@@ -42,12 +44,13 @@ $app->get(
 )->setName('creerboite');
 
 $app->post(
-    'creerboite',
+    '/creerboite',
     function (Request $req, Response $resp, $args) {
         //
     }
 );
 
+// A ENLEVER APRES
 $app->get(
     '/recapitulatif',
     function (Request $req, Response $resp, $args) {
@@ -57,22 +60,31 @@ $app->get(
 )->setName('recapitulatif');
 
 $app->post(
-    'recapitulatif',
-    function (Request $req, Response $resp, $args) {
-        //
-    }
-);
-
-$app->get(
-    '/finaliserboite',
+    '/recapitulatif',
     function (Request $req, Response $resp, $args) {
         $c = new ControleurBoite($this, $req);
-        return $c->finaliser($req, $resp, $args);
+        return $c->recap($req, $resp, $args);
     }
-)->setName('finaliserboite');
+);
+//a enlever apres
+$app->get(
+    '/personaliserboite',
+    function (Request $req, Response $resp, $args) {
+        $c = new ControleurBoite($this, $req);
+        return $c->personaliserBoite($req, $resp, $args);
+    }
+)->setName('personaliserboite');
 
 $app->post(
-    'finaliserboite',
+    '/personaliserboite',
+    function (Request $req, Response $resp, $args) {
+        $c = new ControleurBoite($this, $req);
+        return $c->personaliserBoite($req, $resp, $args);
+    }
+)->setName('personaliserboite');
+
+$app->post(
+    '/finaliserboite',
     function (Request $req, Response $resp, $args) {
         //
     }
