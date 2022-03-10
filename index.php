@@ -27,6 +27,8 @@ $c = new \Slim\Container($configuration);
 
 $app = new \Slim\App;
 
+//debut des routes
+
 $app->get('/', function (Request $req, Response $resp, $args) {
         $acc = new VueAccueil($this, $req);
         return $acc->render();
