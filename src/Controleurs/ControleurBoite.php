@@ -42,4 +42,11 @@ class ControleurBoite {
         $resp->getBody()->write($vue->render());
         return $resp;
     }
+
+    public function recap(Request $req, Response $resp, $args)
+    {
+        $vue = new Vues\VueRecap($this->container, $req, [1 => ["aaa", "aaa", "aaa"], 2 => ["bbb", "bbb", "bbb"]], "");
+        $resp->getBody()->write($vue->render());
+        return $resp;
+    }
 }
