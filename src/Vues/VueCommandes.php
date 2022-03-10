@@ -4,6 +4,7 @@
 namespace custumbox\Vues;
 
 use custumbox\Vues\VueRecap as VueRecap;
+use custombox\model\Commande as Commande;
 
 class VueCommandes extends Vue
 {
