@@ -68,18 +68,13 @@ class ControleurBoite {
 
             $b = $_POST["choix"];
             $taille = $b[0];
-            $poids = $_POST["poids"];
-
-            $boite = new Boite();
-            $boite->taille = $taille;
-            $boite->poids = $poids;
-            $boite->save();
+            $id = Boite::select("*")->where("taille","=",$taille)->get()->first()->id;
 
             //enregistrer la commande
 
             $commande = new Commande();
             $commande->idClient = $client->id;
-            $commande->idBoite = $boite->id;
+            $commande->idBoite = $id;
             $commande->couleurCommande = $_POST["couleur"];
             $commande->save();
 
